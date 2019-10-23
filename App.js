@@ -4,12 +4,15 @@ import {Provider} from 'react-redux';
 import ProductsOverviewScreen from './screens/shop/ProductsOverviewScreen';
 import productsReducer from './store/reducers/products';
 import cartReducer from './store/reducers/cart';
+import ordersReducer from './store/reducers/orders';
+
 import ProductsNavigator from './navigation/ShopNavigation';
 import {AppLoading} from 'expo';
 import * as Font from 'expo-font';
 const rootReducer=combineReducers({
     products:productsReducer,
-    cart:cartReducer
+    cart:cartReducer,
+    orders:ordersReducer
 });
 
 const fetchFonts=()=>{
