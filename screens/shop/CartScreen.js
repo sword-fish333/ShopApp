@@ -25,13 +25,13 @@ const CartScreen=props=>{
     const dispatch=useDispatch();
     return <View style={styles.screen}>
         <View style={styles.summary}>
-        <Text  style={styles.summaryText}>Total: $<Text style={styles.amount}>{totalAmount.toFixed(2)}</Text></Text>
+        <Text  style={styles.summaryText}>Total: $ &nbsp;<Text style={styles.amount}>{totalAmount.toFixed(2)}</Text></Text>
         <Button color={Colors.accent} title='Order now' disabled={cartItems.length===0} onPress={()=>dispatch(ordersActions.addOrder(cartItems,totalAmount))}/>
         </View>
         <View>
             <Text style={styles.items}>Items:</Text>
         </View>
-        <FlatList data={cartItems} keyExtractor={item=>item.productId} renderItem={({item})=><CartItem  quantity={item.quantity} title={item.productTitle} amount={item.sum} onRemove={()=>{
+        <FlatList data={cartItems} keyExtractor={item=>item.productId} renderItem={({item})=><CartItem  deletable quantity={item.quantity} title={item.productTitle} amount={item.sum} onRemove={()=>{
             dispatch(removeFromCart(item.productId))
         }}/>} />
     </View>
