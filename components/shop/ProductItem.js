@@ -1,15 +1,13 @@
      import React from 'react';
     import {View,Text, StyleSheet,Image,Button,TouchableOpacity} from 'react-native';
 
-    const ProductItem =({image,title,price,onViewDetails,onAddToCart})=>{
-        return <TouchableOpacity onPress={onViewDetails}><View style={styles.product}>
+    const ProductItem =({image,title,price,onSelect,onAddToCart,children})=>{
+        return <TouchableOpacity onPress={onSelect}><View style={styles.product}>
             <Image source={{uri:image}} style={styles.image}/>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.price}>${price.toFixed(2)}</Text>
             <View style={styles.actions}>
-                <Button title="View Details" onPress={onViewDetails}/>
-
-                <Button title="Add to cart"  onPress={onAddToCart}/>
+                {children}
             </View>
         </View>
         </TouchableOpacity>
